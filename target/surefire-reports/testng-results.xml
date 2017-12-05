@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Surefire suite" duration-ms="1132" started-at="2017-12-05T11:05:32Z" finished-at="2017-12-05T11:05:34Z">
+    <groups>
+    </groups>
+    <test name="Surefire test" duration-ms="1132" started-at="2017-12-05T11:05:32Z" finished-at="2017-12-05T11:05:34Z">
+      <class name="com.example.maven.conversor_project_degrees_radians.DegresToRadiansTest">
+        <test-method status="PASS" signature="testDegresToRadians()[pri:0, instance:testDegresToRadians(com.example.maven.conversor_project_degrees_radians.DegresToRadiansTest)]" name="testDegresToRadians" duration-ms="632" started-at="2017-12-05T12:05:33Z" finished-at="2017-12-05T12:05:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testDegresToRadians -->
+        <test-method status="PASS" signature="testRadiansToDegres()[pri:0, instance:testRadiansToDegres(com.example.maven.conversor_project_degrees_radians.DegresToRadiansTest)]" name="testRadiansToDegres" duration-ms="257" started-at="2017-12-05T12:05:33Z" finished-at="2017-12-05T12:05:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testRadiansToDegres -->
+      </class> <!-- com.example.maven.conversor_project_degrees_radians.DegresToRadiansTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>
