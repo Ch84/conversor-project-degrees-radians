@@ -7,6 +7,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+/**
+ * This is my MainFrame class. This is my Graphical User Interface for
+ * my conversor program.
+ * 
+ * 
+ * @author Christian Hall
+ * @version 1.0
+ * @since 2017-12-05
+ *
+ */
+
 public class MainFrame {
 
 	private JFrame frame;
