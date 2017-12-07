@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainFrame.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">conversor-project-degrees-radians</a> &gt; <a href="index.source.html" class="el_package">com.example.maven.conversor_project_degrees_radians</a> &gt; <span class="el_source">MainFrame.java</span></div><h1>MainFrame.java</h1><pre class="source lang-java linenums">package com.example.maven.conversor_project_degrees_radians;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,75 +11,125 @@ import javax.swing.JTextField;
 
 public class MainFrame {
 
-	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JFrame frmConversor;
+<span class="nc" id="L15">	private JTextField tx_ValueInDegrees = new JTextField(&quot;&quot;);</span>
+<span class="nc" id="L16">	private JTextField tx_ValueInRadians = new JTextField(&quot;&quot;);</span>
+<span class="nc" id="L17">	private JLabel lblEnterTheValue = new JLabel(&quot;Enter the value in degrees:&quot;);</span>
+<span class="nc" id="L18">	private JLabel lblEnterTheValue_1 = new JLabel(&quot;Enter the value in radians:&quot;);</span>
+<span class="nc" id="L19">	private JLabel lblResult = new JLabel(&quot;result:&quot;);</span>
+<span class="nc" id="L20">	private JButton btnToRadians = new JButton(&quot;to radians&quot;);</span>
+<span class="nc" id="L21">	private JButton btnToDegrees = new JButton(&quot;to degrees&quot;);</span>
+<span class="nc" id="L22">	private DegreesToRadians conversor = new DegreesToRadians();</span>
+<span class="nc" id="L23">	double valueInDegrees = 0.0;</span>
+<span class="nc" id="L24">	double convertedValue = 0.0;</span>
+<span class="nc" id="L25">	double valueInRadians = 0.0;</span>
+
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-<span class="nc" id="L20">		EventQueue.invokeLater(new Runnable() {</span>
+<span class="nc" id="L32">		EventQueue.invokeLater(new Runnable() {</span>
 			public void run() {
 				try {
-<span class="nc" id="L23">					MainFrame window = new MainFrame();</span>
-<span class="nc" id="L24">					window.frame.setVisible(true);</span>
-<span class="nc" id="L25">				} catch (Exception e) {</span>
-<span class="nc" id="L26">					e.printStackTrace();</span>
-<span class="nc" id="L27">				}</span>
-<span class="nc" id="L28">			}</span>
+<span class="nc" id="L35">					MainFrame window = new MainFrame();</span>
+<span class="nc" id="L36">					window.frmConversor.setVisible(true);</span>
+<span class="nc" id="L37">				} catch (Exception e) {</span>
+<span class="nc" id="L38">					e.printStackTrace();</span>
+<span class="nc" id="L39">				}</span>
+<span class="nc" id="L40">			}</span>
 		});
-<span class="nc" id="L30">	}</span>
+<span class="nc" id="L42">	}</span>
 
 	/**
 	 * Create the application.
 	 */
-<span class="nc" id="L35">	public MainFrame() {</span>
-<span class="nc" id="L36">		initialize();</span>
-<span class="nc" id="L37">	}</span>
+<span class="nc" id="L47">	public MainFrame() {</span>
+<span class="nc" id="L48">		initialize();</span>
+<span class="nc" id="L49">	}</span>
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-<span class="nc" id="L43">		frame = new JFrame();</span>
-<span class="nc" id="L44">		frame.setBounds(100, 100, 450, 300);</span>
-<span class="nc" id="L45">		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
-<span class="nc" id="L46">		frame.getContentPane().setLayout(null);</span>
+<span class="nc" id="L55">		frmConversor = new JFrame();</span>
+<span class="nc" id="L56">		frmConversor.setResizable(false);</span>
+<span class="nc" id="L57">		frmConversor.setTitle(&quot;Conversor&quot;);</span>
+<span class="nc" id="L58">		frmConversor.setBounds(300, 300, 400, 400);</span>
+<span class="nc" id="L59">		frmConversor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L60">		frmConversor.getContentPane().setLayout(null);</span>
 		
-<span class="nc" id="L48">		JLabel lblConversor = new JLabel(&quot;Conversor&quot;);</span>
-<span class="nc" id="L49">		lblConversor.setBounds(186, 12, 100, 15);</span>
-<span class="nc" id="L50">		frame.getContentPane().add(lblConversor);</span>
+
+<span class="nc" id="L63">		btnToRadians.setBounds(84, 233, 117, 25);</span>
+<span class="nc" id="L64">		btnToRadians.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent e) {
+<span class="nc bnc" id="L66" title="All 2 branches missed.">				if (!(tx_ValueInDegrees.getText().toString().equals(&quot;&quot;))) {</span>
+<span class="nc" id="L67">					valueInDegrees = Double.parseDouble(tx_ValueInDegrees.getText());</span>
+<span class="nc" id="L68">					convertedValue = conversor.convertDegresToRadians(valueInDegrees);</span>
+<span class="nc" id="L69">					lblResult.setText(&quot;Result: &quot; + convertedValue);</span>
+					
+<span class="nc" id="L71">					cleanTextFields();</span>
+					
+				}else {
+<span class="nc" id="L74">					lblResult.setText(&quot;Result: No value was informed!&quot;);					</span>
+<span class="nc" id="L75">					cleanTextFields();</span>
+				}
+				
+<span class="nc" id="L78">			}</span>
+		});
 		
-<span class="nc" id="L52">		JLabel lblEnterTheValue = new JLabel(&quot;Enter the value in degrees:&quot;);</span>
-<span class="nc" id="L53">		lblEnterTheValue.setBounds(150, 60, 214, 15);</span>
-<span class="nc" id="L54">		frame.getContentPane().add(lblEnterTheValue);</span>
 		
-<span class="nc" id="L56">		JLabel lblEnterTheValue_1 = new JLabel(&quot;Enter the value in radians:&quot;);</span>
-<span class="nc" id="L57">		lblEnterTheValue_1.setBounds(150, 143, 188, 15);</span>
-<span class="nc" id="L58">		frame.getContentPane().add(lblEnterTheValue_1);</span>
+<span class="nc" id="L82">		frmConversor.getContentPane().add(btnToRadians);</span>
 		
-<span class="nc" id="L60">		textField = new JTextField();</span>
-<span class="nc" id="L61">		textField.setBounds(150, 111, 188, 19);</span>
-<span class="nc" id="L62">		frame.getContentPane().add(textField);</span>
-<span class="nc" id="L63">		textField.setColumns(10);</span>
+<span class="nc" id="L84">		JLabel lblEnterTheValue_2 = new JLabel(&quot;Enter the value in degrees: &quot;);</span>
+<span class="nc" id="L85">		lblEnterTheValue_2.setBounds(84, 26, 209, 15);</span>
+<span class="nc" id="L86">		frmConversor.getContentPane().add(lblEnterTheValue_2);</span>
 		
-<span class="nc" id="L65">		textField_1 = new JTextField();</span>
-<span class="nc" id="L66">		textField_1.setBounds(150, 187, 188, 19);</span>
-<span class="nc" id="L67">		frame.getContentPane().add(textField_1);</span>
-<span class="nc" id="L68">		textField_1.setColumns(10);</span>
+<span class="nc" id="L88">		tx_ValueInDegrees = new JTextField();</span>
+<span class="nc" id="L89">		tx_ValueInDegrees.setBounds(84, 63, 195, 19);</span>
+<span class="nc" id="L90">		frmConversor.getContentPane().add(tx_ValueInDegrees);</span>
+<span class="nc" id="L91">		tx_ValueInDegrees.setColumns(10);</span>
 		
-<span class="nc" id="L70">		JLabel lblResult = new JLabel(&quot;result:&quot;);</span>
-<span class="nc" id="L71">		lblResult.setBounds(150, 230, 136, 15);</span>
-<span class="nc" id="L72">		frame.getContentPane().add(lblResult);</span>
+<span class="nc" id="L93">		JLabel lblEnterTheValue_3 = new JLabel(&quot;Enter the value in radians:&quot;);</span>
+<span class="nc" id="L94">		lblEnterTheValue_3.setBounds(84, 115, 195, 15);</span>
+<span class="nc" id="L95">		frmConversor.getContentPane().add(lblEnterTheValue_3);</span>
 		
-<span class="nc" id="L74">		JButton btnTo = new JButton(&quot;To Degrees&quot;);</span>
-<span class="nc" id="L75">		btnTo.setBounds(150, 247, 117, 25);</span>
-<span class="nc" id="L76">		frame.getContentPane().add(btnTo);</span>
+<span class="nc" id="L97">		tx_ValueInRadians = new JTextField();</span>
+<span class="nc" id="L98">		tx_ValueInRadians.setBounds(87, 149, 192, 19);</span>
+<span class="nc" id="L99">		frmConversor.getContentPane().add(tx_ValueInRadians);</span>
+<span class="nc" id="L100">		tx_ValueInRadians.setColumns(10);</span>
 		
-<span class="nc" id="L78">		JButton btnToRadians = new JButton(&quot;To Radians&quot;);</span>
-<span class="nc" id="L79">		btnToRadians.setBounds(291, 247, 117, 25);</span>
-<span class="nc" id="L80">		frame.getContentPane().add(btnToRadians);</span>
-<span class="nc" id="L81">	}</span>
+<span class="nc" id="L102">		btnToDegrees = new JButton(&quot;to degrees&quot;);</span>
+<span class="nc" id="L103">		btnToDegrees.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent e) {
+<span class="nc bnc" id="L105" title="All 2 branches missed.">				if(!(tx_ValueInRadians.getText().equals(&quot;&quot;))) {</span>
+<span class="nc" id="L106">					valueInRadians = Double.parseDouble(tx_ValueInRadians.getText());</span>
+<span class="nc" id="L107">					convertedValue = conversor.convertRadiansToDegres(valueInRadians);</span>
+<span class="nc" id="L108">					lblResult.setText(&quot;Result: &quot; + convertedValue);					</span>
+<span class="nc" id="L109">					cleanTextFields();</span>
+					
+				}else {
+<span class="nc" id="L112">					lblResult.setText(&quot;Result: No value was informed!&quot;);</span>
+<span class="nc" id="L113">					cleanTextFields();</span>
+					
+				}					
+				
+<span class="nc" id="L117">			}</span>
+		});
+<span class="nc" id="L119">		btnToDegrees.setBounds(217, 233, 117, 25);</span>
+<span class="nc" id="L120">		frmConversor.getContentPane().add(btnToDegrees);</span>
+		
+		
+<span class="nc" id="L123">		lblResult.setBounds(84, 193, 250, 15);</span>
+<span class="nc" id="L124">		frmConversor.getContentPane().add(lblResult);</span>
+	
+	
+<span class="nc" id="L127">	}</span>
+	public void cleanTextFields() {
+<span class="nc" id="L129">		tx_ValueInDegrees.setText(&quot;&quot;);</span>
+<span class="nc" id="L130">		tx_ValueInRadians.setText(&quot;&quot;);</span>
+		
+<span class="nc" id="L132">	}</span>
 }
+
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
