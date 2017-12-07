@@ -57,7 +57,7 @@ public class DegresToRadiansTest {
 			double randomNumber = random.nextDouble()*100;
 			
 			LOG.info("Testing the method degrees to radians with: " + randomNumber);
-			assertEquals(degrees2radians(randomNumber), dtr.convertDegresToRadians(randomNumber),0.5);
+			assertEquals(degrees2radians(randomNumber), DegreesToRadians.convertDegresToRadians(randomNumber),0.5);
 
 		}
 	}
@@ -69,9 +69,9 @@ public class DegresToRadiansTest {
 			double randomNumber = random.nextDouble()*100;
 			
 			LOG.info("Testing the method radians to degrees with: " + randomNumber);
-			assertEquals(radians2degrees(randomNumber), dtr.convertRadiansToDegres(randomNumber), 0.1);
+			assertEquals(radians2degrees(randomNumber), DegreesToRadians.convertRadiansToDegres(randomNumber), 0.1);
 
-		}
-	}
+		} 
+	} 
 
 }
